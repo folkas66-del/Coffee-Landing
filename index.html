@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UrbanCup — кав'ярня з атмосферою затишку</title>
+  <link rel="stylesheet" href="./dist/output.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    html, body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+    @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes glow   { 0%,100%{opacity:.55} 50%{opacity:1} }
+    .reveal{opacity:0; transform:translateY(16px)}
+    .revealed{opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease}
+    .tip::after{content:attr(data-tip); position:absolute; left:50%; transform:translateX(-50%); bottom:150%; white-space:nowrap; background:#111827; color:#fff; font-size:12px; padding:6px 10px; border-radius:10px; opacity:0; pointer-events:none; transition:.2s}
+    .tip:hover::after{opacity:1}
+  </style>
+</head>
+<body class="bg-stone-900 text-stone-100">
+  <div class="pointer-events-none fixed -top-20 -right-20 h-80 w-80 rounded-full bg-amber-900/35 blur-3xl animate-[glow_6s_ease-in-out_infinite]"></div>
+  <div class="pointer-events-none fixed bottom-10 left-10 h-72 w-72 rounded-full bg-orange-900/35 blur-3xl animate-[glow_7s_ease-in-out_infinite]"></div>
+
+  <header id="siteHeader" class="sticky top-0 z-50 bg-stone-900/85 backdrop-blur border-b border-stone-800 transition-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-extrabold text-stone-100 text-lg">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-amber-600 text-white shadow-md">UC</span>
+        UrbanCup
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#menu"      class="hover:text-amber-400 transition-colors">Меню</a>
+        <a href="#story"     class="hover:text-amber-400 transition-colors">Про нас</a>
+        <a href="#combo"     class="hover:text-amber-400 transition-colors">Комбо</a>
+        <a href="#reviews"   class="hover:text-amber-400 transition-colors">Відгуки</a>
+        <a href="#locations" class="hover:text-amber-400 transition-colors">Локації</a>
+        <a href="#contact"   class="hover:text-amber-400 transition-colors">Контакти</a>
+      </nav>
+      <a href="#order" class="px-4 py-2 rounded-xl bg-amber-600 text-white font-semibold shadow hover:bg-amber-500 active:scale-[.98] transition-all">Замовити</a>
+    </div>
+  </header>
+
+  <section id="hero" class="relative overflow-hidden py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 items-center gap-12">
+      <div class="reveal">
+        <p class="inline-flex items-center gap-2 text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-600/15 text-amber-300 ring-1 ring-amber-700/40">Щодня з 7:30 · Свіжа обсмажка</p>
+        <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-stone-50">Кава в коричневих тонах <span class="bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent">тепла й затишку</span></h1>
+        <p class="mt-5 text-lg text-stone-300 max-w-xl">UrbanCup — це спокійні ранки, доброзичливі бариста і чашка кави, яка робить день кращим.</p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#menu" class="px-5 py-3 rounded-xl bg-amber-600 text-white font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition">Переглянути меню</a>
+          <a href="#order" class="px-5 py-3 rounded-xl ring-1 ring-stone-700 text-stone-100 hover:bg-stone-800 font-semibold transition">Замовити онлайн</a>
+        </div>
+      </div>
+      <div class="relative reveal">
+        <div class="aspect-[4/3] w-full">
+          <img src="./img/fon-1.png" alt="Urban Cup" class="h-full w-full object-cover rounded-3xl shadow-2xl ring-1 ring-black/40 animate-[floaty_6s_ease-in-out_infinite]">
+        </div>
+        <div class="absolute -z-10 -bottom-6 left-6 right-6 h-10 rounded-full bg-black/30 blur-2xl"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-10 reveal">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-50">Хіти меню</h2>
+          <p class="mt-2 text-stone-400">Більше кави та домашніх десертів у теплій кавово-бурштиновій палітрі.</p>
+        </div>
+        <a href="#order" class="hidden sm:inline-block px-4 py-2 rounded-xl bg-amber-600 text-white font-semibold shadow hover:bg-amber-500 transition">Замовити</a>
+      </div>
+
+      <h3 class="text-xl font-bold mb-4 text-stone-200 reveal">Кава</h3>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/exp.png" alt="Еспресо" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Еспресо</h4>
+              <p class="text-sm text-stone-400">Соло або подвійний</p>
+            </div>
+            <div class="font-semibold text-stone-100">45 ₴</div>
+          </div>
+        </article>
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/kap.png" alt="Капучино" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Капучино</h4>
+              <p class="text-sm text-stone-400">Еспресо + молоко</p>
+            </div>
+            <div class="font-semibold text-stone-100">75 ₴</div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/late.png" alt="Лате ваніль" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Лате ваніль</h4>
+              <p class="text-sm text-stone-400">Легкий аромат ванілі</p>
+            </div>
+            <div class="font-semibold text-stone-100">85 ₴</div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/flet.png" alt="Флет-вайт" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Флет-вайт</h4>
+              <p class="text-sm text-stone-400">Подвійний еспресо + молоко</p>
+            </div>
+            <div class="font-semibold text-stone-100">79 ₴</div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:-translate-y-1 hover:shadow-xl transition reveal">
+          <img src="./img/amerkano.png" alt="Американо" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Американо</h4>
+              <p class="text-sm text-stone-400">Чистий смак обсмажки</p>
+            </div>
+            <div class="font-semibold text-stone-100">55 ₴</div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/ace.png" alt="Айс-лате" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Айс-лате карамель</h4>
+              <p class="text-sm text-stone-400">Охолоджує і бадьорить</p>
+            </div>
+            <div class="font-semibold text-stone-100">89 ₴</div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="text-xl font-bold mb-4 text-stone-200 reveal">Випічка та десерти</h3>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/kiki.png" alt="Чізкейк Нью-Йорк" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Чізкейк Нью-Йорк</h4>
+              <p class="text-sm text-stone-400">Класичний, ніжний</p>
+            </div>
+            <div class="font-semibold text-stone-100"> 95 ₴</div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/megdal.png" alt="Круасан мигдальний" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Круасан мигдальний</h4>
+              <p class="text-sm text-stone-400">Свіжоспечений, хрусткий</p>
+            </div>
+            <div class="font-semibold text-stone-100">69 ₴</div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl border border-stone-800 bg-stone-800 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition reveal">
+          <img src="./img/tiramisu.png" alt="Тірамісу" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+          <div class="mt-4 flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-stone-100">Тірамісу</h4>
+              <p class="text-sm text-stone-400">З ароматом еспресо</p>
+            </div>
+            <div class="font-semibold text-stone-100">105 ₴</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="py-20 bg-stone-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1 reveal">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-50">Наш підхід</h2>
+        <ul class="mt-6 space-y-4 text-stone-300">
+          <li class="flex gap-3"><span class="h-6 w-6 flex-none rounded-lg bg-amber-600/20 text-amber-300 inline-flex items-center justify-center">✓</span> Зерно від локальних обсмажчиків.</li>
+          <li class="flex gap-3"><span class="h-6 w-6 flex-none rounded-lg bg-amber-600/20 text-amber-300 inline-flex items-center justify-center">✓</span> Контроль якості кожної чашки.</li>
+          <li class="flex gap-3"><span class="h-6 w-6 flex-none rounded-lg bg-amber-600/20 text-amber-300 inline-flex items-center justify-center">✓</span> Еко-упаковка та знижка з власною горняткою.</li>
+        </ul>
+        <div class="mt-8 flex gap-3">
+          <a href="#locations" class="px-5 py-3 rounded-xl bg-stone-800 text-stone-100 font-semibold shadow hover:bg-stone-700 transition">Наші локації</a>
+          <a href="#contact" class="px-5 py-3 rounded-xl ring-1 ring-stone-700 text-stone-100 hover:bg-stone-800 font-semibold transition">Стати партнером</a>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 reveal">
+        <div class="aspect-[4/3] rounded-3xl bg-[url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=1600&auto=format&fit=crop')] bg-cover bg-center shadow-2xl ring-1 ring-black/40"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="combo" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl bg-gradient-to-r from-amber-700 to-orange-600 text-white p-8 sm:p-12 shadow-xl reveal">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Комбо «Ранок» — 109 ₴</h2>
+            <p class="mt-2 text-amber-100">Капучино або американо + круасан мигдальний. Щодня до 12:00.</p>
+            <a href="#order" class="inline-block mt-6 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 font-semibold transition">Замовити</a>
+          </div>
+          <img src="./img/kvkrus.png" alt="Комбо" class="w-full h-56 sm:h-64 object-cover rounded-xl"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-50">Відгуки гостей</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border border-stone-800 bg-stone-800 p-6 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/40?img=1" alt="Марина"/><div class="font-semibold text-stone-100">Марина</div></div>
+          <p class="mt-3 text-stone-300">Найзатишніша кава поруч із роботою. Люблю ваші круасани 💛</p>
+          <div class="mt-3 text-amber-400">★★★★★</div>
+        </article>
+        <article class="rounded-2xl border border-stone-800 bg-stone-800 p-6 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/40?img=22" alt="Олег"/><div class="font-semibold text-stone-100">Олег</div></div>
+          <p class="mt-3 text-stone-300">Раф апельсин — топ. Сервіс швидкий, ціни приємні.</p>
+          <div class="mt-3 text-amber-400">★★★★★</div>
+        </article>
+        <article class="rounded-2xl border border-stone-800 bg-stone-800 p-6 shadow-sm hover:shadow-md transition">
+          <div class="flex items-center gap-3"><img class="h-10 w-10 rounded-full" src="https://i.pravatar.cc/40?img=12" alt="Аліна"/><div class="font-semibold text-stone-100">Аліна</div></div>
+          <p class="mt-3 text-stone-300">Атмосфера дому. Часто беру айс-лате карамель, дуже смачно!</p>
+          <div class="mt-3 text-amber-400">★★★★★</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="locations" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-stone-50 reveal">Наші локації</h2>
+      <p class="mt-2 text-stone-400 reveal">Натисни на позначку, щоб побачити години роботи.</p>
+      <div class="mt-8 relative rounded-3xl overflow-hidden shadow-lg ring-1 ring-stone-800 reveal">
+        <!-- ЗАМІНА ЛИШЕ ТУТ -->
+        <img src="./img/foncup.png" alt="UrbanCup locations" class="w-full h-[420px] object-cover"/>
+        <button data-tip="Центр · 7:30–21:00"    class="tip absolute left-[22%] top-[42%] -translate-x-1/2 -translate-y-1/2 p-2 bg-amber-600 text-white rounded-full shadow">UC</button>
+        <button data-tip="Поділ · 8:00–20:00"   class="tip absolute left-[58%] top-[30%] -translate-x-1/2 -translate-y-1/2 p-2 bg-amber-600 text-white rounded-full shadow">UC</button>
+        <button data-tip="UrbanCity · 7:30–21:00" class="tip absolute left-[78%] top-[62%] -translate-x-1/2 -translate-y-1/2 p-2 bg-amber-600 text-white rounded-full shadow">UC</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="py-20 bg-stone-950 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 items-center gap-10 reveal">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">-10% на перше онлайн-замовлення</h2>
+        <p class="mt-2 text-stone-300">Підпишись на новини та акції UrbanCup.</p>
+      </div>
+      <form class="mt-6 lg:mt-0 flex rounded-2xl overflow-hidden bg-stone-800 ring-1 ring-stone-700">
+        <input type="email" required placeholder="Ваш email" class="min-w-0 flex-1 px-4 py-3 text-stone-100 placeholder-stone-400 bg-transparent outline-none" />
+        <button class="px-5 py-3 bg-amber-600 hover:bg-amber-500 font-semibold">Підписатися</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 reveal">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight text-stone-50">Напишіть нам</h2>
+          <p class="mt-2 text-stone-400">Співпраця, кейтеринг, франшиза — відкриті до діалогу.</p>
+          <ul class="mt-6 space-y-2 text-stone-300">
+            <li>📞 +38 (050) 000-00-00</li>
+            <li>✉️ hello@urbancup.coffee</li>
+            <li>IG: @urbancup.coffee</li>
+          </ul>
+        </div>
+        <form class="bg-stone-800 rounded-2xl p-6 shadow-sm border border-stone-800">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input class="px-4 py-3 rounded-xl bg-stone-900 text-stone-100 placeholder-stone-500 ring-1 ring-stone-700 focus:ring-amber-500 outline-none" placeholder="Ім'я" />
+            <input class="px-4 py-3 rounded-xl bg-stone-900 text-stone-100 placeholder-stone-500 ring-1 ring-stone-700 focus:ring-amber-500 outline-none" placeholder="Email" />
+            <textarea rows="4" class="sm:col-span-2 px-4 py-3 rounded-xl bg-stone-900 text-stone-100 placeholder-stone-500 ring-1 ring-stone-700 focus:ring-amber-500 outline-none" placeholder="Повідомлення"></textarea>
+          </div>
+          <button class="mt-4 w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-600 text-white font-semibold hover:bg-amber-500">Надіслати</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div id="orderModal" class="fixed inset-0 z-[60] hidden items-center justify-center">
+    <button class="absolute inset-0 bg-black/60 backdrop-blur-sm" data-close="order" aria-label="Закрити модальне"></button>
+
+    <div role="dialog" aria-modal="true" aria-labelledby="orderTitle"
+         class="relative mx-4 w-full max-w-xl rounded-2xl border border-stone-800 bg-stone-900 p-6 shadow-2xl">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h3 id="orderTitle" class="text-xl font-bold text-stone-100">Замовлення онлайн</h3>
+          <p class="mt-1 text-sm text-stone-400">Заповни форму — ми підготуємо замовлення заздалегідь.</p>
+        </div>
+        <button class="rounded-lg p-2 text-stone-400 hover:bg-stone-800" data-close="order" aria-label="Закрити">✕</button>
+      </div>
+
+      <form id="orderForm" class="mt-6 space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="block text-sm">
+            <span class="mb-1 block text-stone-300">Ім'я</span>
+            <input name="name" required class="w-full rounded-xl bg-stone-800 px-3 py-2 text-stone-100 ring-1 ring-stone-700 placeholder-stone-500 outline-none focus:ring-amber-500" placeholder="Олексій"/>
+          </label>
+          <label class="block text-sm">
+            <span class="mb-1 block text-stone-300">Телефон</span>
+            <input name="phone" required pattern="[\+0-9\s\-()]{7,}"
+                   class="w-full rounded-xl bg-stone-800 px-3 py-2 text-stone-100 ring-1 ring-stone-700 placeholder-stone-500 outline-none focus:ring-amber-500"
+                   placeholder="+38 (0XX) XXX-XX-XX"/>
+          </label>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="block text-sm">
+            <span class="mb-1 block text-stone-300">Напій</span>
+            <select name="drink" class="w-full rounded-xl bg-stone-800 px-3 py-2 text-stone-100 ring-1 ring-stone-700 outline-none focus:ring-amber-500">
+              <option>Еспресо</option>
+              <option selected>Американо</option>
+              <option>Капучино</option>
+              <option>Лате</option>
+              <option>Раф апельсин</option>
+            </select>
+          </label>
+          <label class="block text-sm">
+            <span class="mb-1 block text-stone-300">Розмір</span>
+            <div class="grid grid-cols-3 gap-2">
+              <label class="flex items-center gap-2 rounded-xl bg-stone-800 px-3 py-2 ring-1 ring-stone-700">
+                <input type="radio" name="size" value="S" class="accent-amber-600" checked>
+                <span class="text-stone-200">S</span>
+              </label>
+              <label class="flex items-center gap-2 rounded-xl bg-stone-800 px-3 py-2 ring-1 ring-stone-700">
+                <input type="radio" name="size" value="M" class="accent-amber-600">
+                <span class="text-stone-200">M</span>
+              </label>
+              <label class="flex items-center gap-2 rounded-xl bg-stone-800 px-3 py-2 ring-1 ring-stone-700">
+                <input type="radio" name="size" value="L" class="accent-amber-600">
+                <span class="text-stone-200">L</span>
+              </label>
+            </div>
+          </label>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="block text-sm">
+            <span class="mb-1 block text-stone-300">Цукор</span>
+            <select name="sugar" class="w-full rounded-xl bg-stone-800 px-3 py-2 text-stone-100 ring-1 ring-stone-700 outline-none focus:ring-amber-500">
+              <option value="0" selected>Без цукру</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </label>
+          <label class="block text-sm">
+            <span class="mb-1 block text-stone-300">Молоко</span>
+            <select name="milk" class="w-full rounded-xl bg-stone-800 px-3 py-2 text-stone-100 ring-1 ring-stone-700 outline-none focus:ring-amber-500">
+              <option value="none" selected>Без молока</option>
+              <option value="regular">Звичайне</option>
+              <option value="oat">Вівсяне</option>
+              <option value="almond">Мигдальне</option>
+              <option value="lactose-free">Безлактозне</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="block text-sm">
+          <span class="mb-1 block text-stone-300">Коментар</span>
+          <textarea name="notes" rows="3" class="w-full rounded-xl bg-stone-800 px-3 py-2 text-stone-100 ring-1 ring-stone-700 placeholder-stone-500 outline-none focus:ring-amber-500" placeholder="Без кориці, заберу о 10:30"></textarea>
+        </label>
+
+        <div class="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-end">
+          <button type="button" data-close="order" class="rounded-xl px-4 py-2 ring-1 ring-stone-700 text-stone-200 hover:bg-stone-800">Скасувати</button>
+          <button type="submit" class="rounded-xl bg-amber-600 px-5 py-2 font-semibold text-white hover:bg-amber-500">Надіслати</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="border-t border-stone-800 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-stone-400">
+      <div class="flex items-center gap-2 text-stone-300">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-amber-600 text-white text-sm font-bold">UC</span>
+        © <span id="year"></span> UrbanCup. Усі права захищені.
+      </div>
+      <nav class="flex items-center gap-5">
+        <a href="#" class="hover:text-stone-200">Політика конфіденційності</a>
+        <a href="#" class="hover:text-stone-200">Умови</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const header = document.getElementById('siteHeader');
+    const toggleHeaderShadow = () => header.classList.toggle('shadow-lg', window.scrollY > 6);
+    window.addEventListener('scroll', toggleHeaderShadow); toggleHeaderShadow();
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
+      });
+    }, {threshold: .2});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    (function(){
+      const modal = document.getElementById('orderModal');
+      const form  = document.getElementById('orderForm');
+      const firstInputSel = "#orderForm input[name='name']";
+
+      function openModal(e){
+        if(e) e.preventDefault();
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.classList.add('overflow-hidden');
+        setTimeout(()=>document.querySelector(firstInputSel)?.focus(), 0);
+      }
+      function closeModal(){
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      document.querySelectorAll("a[href='#order'], button[data-open='order']").forEach(el=>{
+        el.addEventListener('click', openModal);
+      });
+
+      modal.querySelectorAll('[data-close="order"]').forEach(btn=>btn.addEventListener('click', closeModal));
+
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
+        console.log('ORDER', data);
+        alert('Дякуємо! Замовлення прийнято.');
+        form.reset();
+        closeModal();
+      });
+    })();
+  </script>
+</body>
+</html>
